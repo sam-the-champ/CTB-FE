@@ -1,0 +1,24 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { LoginPage } from './pages/LoginPage';
+import { ProtectedRoute } from './components/ProtectedRoutes';
+import './App.css'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<div className="p-8"><h1>The Task Board goes here!</h1></div>} />
+        </Route>
+
+        {/* Redirect everything else to login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
