@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 1. Create the instance
 const api = axios.create({
-  baseURL: 'https://ctb01.onrender.com/api',
+  baseURL: 'https://ctb01-1.onrender.com/api',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
