@@ -37,59 +37,155 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-slate-100">
+    <div className="min-h-screen flex items-center justify-center px-4"
+      style={{ background: '#0f0e0d', fontFamily: "'DM Sans', sans-serif" }}>
+
+      {/* Ambient glow top-left */}
+      <div style={{
+        position: 'fixed', top: -120, left: -120, width: 380, height: 380,
+        background: 'radial-gradient(circle, rgba(210,140,40,0.12) 0%, transparent 70%)',
+        pointerEvents: 'none', zIndex: 0
+      }} />
+
+      {/* Ambient glow bottom-right */}
+      <div style={{
+        position: 'fixed', bottom: -80, right: -80, width: 280, height: 280,
+        background: 'radial-gradient(circle, rgba(210,140,40,0.07) 0%, transparent 70%)',
+        pointerEvents: 'none', zIndex: 0
+      }} />
+
+      <div className="max-w-md w-full relative z-10" style={{
+        background: '#1a1916',
+        border: '0.5px solid rgba(210,140,40,0.22)',
+        borderRadius: 18,
+        padding: '2.5rem 2.25rem',
+      }}>
+        {/* Header */}
         <div className="text-center mb-8">
-          <div className="bg-blue-600 w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <LogIn className="text-white" size={24} />
+          <div style={{
+            width: 46, height: 46, borderRadius: 12, margin: '0 auto 1.25rem',
+            background: 'rgba(210,140,40,0.12)',
+            border: '0.5px solid rgba(210,140,40,0.35)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <LogIn size={22} style={{ color: '#d28c28' }} />
           </div>
-          <h1 className="text-2xl font-bold text-slate-900">Welcome Back</h1>
-          <p className="text-slate-500">Sign in to manage your Task Board</p>
+          <h1 style={{
+            fontFamily: "'DM Serif Display', serif",
+            fontSize: 26, letterSpacing: '-0.3px',
+            color: '#f0ebe2', margin: '0 0 4px',
+          }}>Welcome Back</h1>
+          <p style={{ fontSize: 13.5, color: '#7a7468', margin: 0 }}>
+            Sign in to manage your Task Board
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
           {error && (
-            <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-100">
+            <div style={{
+              background: 'rgba(227,76,60,0.1)',
+              border: '0.5px solid rgba(227,76,60,0.3)',
+              borderRadius: 8, padding: '10px 12px',
+              fontSize: 13, color: '#e34c3c',
+            }}>
               {error}
             </div>
           )}
 
+          {/* Email */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-            <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <label style={{
+              display: 'block', fontSize: 11.5, fontWeight: 500,
+              color: '#a09880', letterSpacing: '0.06em',
+              textTransform: 'uppercase', marginBottom: 6,
+            }}>Email Address</label>
+            <div style={{ position: 'relative' }}>
+              <Mail size={16} style={{
+                position: 'absolute', left: 12, top: '50%',
+                transform: 'translateY(-50%)', color: '#5a5448',
+              }} />
               <input
                 {...register('email')}
-                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                 placeholder="you@company.com"
+                style={{
+                  width: '100%', boxSizing: 'border-box',
+                  background: '#111009',
+                  border: errors.email ? '0.5px solid rgba(227,76,60,0.5)' : '0.5px solid #2e2c28',
+                  borderRadius: 9, color: '#f0ebe2',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 14, padding: '10px 14px 10px 38px', outline: 'none',
+                }}
               />
             </div>
-            {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email.message as string}</p>}
+            {errors.email && (
+              <p style={{ fontSize: 12, color: '#e34c3c', marginTop: 4 }}>
+                {errors.email.message as string}
+              </p>
+            )}
           </div>
 
+          {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-            <div className="relative">
-              <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <label style={{
+              display: 'block', fontSize: 11.5, fontWeight: 500,
+              color: '#a09880', letterSpacing: '0.06em',
+              textTransform: 'uppercase', marginBottom: 6,
+            }}>Password</label>
+            <div style={{ position: 'relative' }}>
+              <Lock size={16} style={{
+                position: 'absolute', left: 12, top: '50%',
+                transform: 'translateY(-50%)', color: '#5a5448',
+              }} />
               <input
                 {...register('password')}
                 type="password"
-                className="w-full pl-10 pr-4 py-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                 placeholder="••••••••"
+                style={{
+                  width: '100%', boxSizing: 'border-box',
+                  background: '#111009',
+                  border: errors.password ? '0.5px solid rgba(227,76,60,0.5)' : '0.5px solid #2e2c28',
+                  borderRadius: 9, color: '#f0ebe2',
+                  fontFamily: "'DM Sans', sans-serif",
+                  fontSize: 14, padding: '10px 14px 10px 38px', outline: 'none',
+                }}
               />
             </div>
-            {errors.password && <p className="mt-1 text-xs text-red-500">{errors.password.message as string}</p>}
+            {errors.password && (
+              <p style={{ fontSize: 12, color: '#e34c3c', marginTop: 4 }}>
+                {errors.password.message as string}
+              </p>
+            )}
           </div>
 
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-70"
+            style={{
+              width: '100%', background: isLoading ? '#8a5c18' : '#d28c28',
+              border: 'none', borderRadius: 9, color: '#0f0e0d',
+              fontFamily: "'DM Sans', sans-serif",
+              fontSize: 14, fontWeight: 500, padding: '11px',
+              cursor: isLoading ? 'not-allowed' : 'pointer',
+              letterSpacing: '0.02em', marginTop: 4,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              opacity: isLoading ? 0.6 : 1,
+              transition: 'background 0.2s, opacity 0.2s',
+            }}
           >
-            {isLoading ? <Loader2 className="animate-spin" size={20} /> : "Sign In"}
+            {isLoading ? <Loader2 size={18} className="animate-spin" /> : "Sign In"}
           </button>
         </form>
+
+        {/* Footer */}
+        <div style={{ height: '0.5px', background: '#2a2824', margin: '1.6rem 0 1.25rem' }} />
+        <p style={{ textAlign: 'center', fontSize: 12.5, color: '#4a4740', margin: 0 }}>
+          No account yet?{' '}
+          <a href="/register" style={{ color: '#d28c28', textDecoration: 'none' }}>Create one free</a>
+        </p>
       </div>
+
+      {/* Google Font import — add to your index.html or global CSS instead */}
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');`}</style>
     </div>
   );
 };
