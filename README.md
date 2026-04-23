@@ -18,6 +18,7 @@ Standardized Error Handling with consistent JSON response parsing.
 Theme: Optimized Dark Mode for high-productivity workflows using Tailwind CSS.
 
 **🛠 Tech Stack**
+
 Build Tool: Vite
 
 Language: TypeScript
@@ -33,6 +34,7 @@ Form Logic: React Hook Form + Zod (Validation)
 API Client: Axios (Interceptors enabled)
 
 **📋 Prerequisites**
+
 Node.js (v18+)
 
 A running instance of the Task Board Backend
@@ -42,11 +44,15 @@ Clone the repository:
 
 Bash
 git clone https://github.com/your-username/task-board-frontend.git
+
 cd task-board-frontend
+
 Install dependencies:
 
 Bash
+
 npm install
+
 Environment Variables:
 Create a .env file in the root directory:
 
@@ -55,9 +61,13 @@ VITE_API_URL=http://localhost:5000/api
 Run Development Server:
 
 Bash
+
 npm run dev
+
 🏗 Key Engineering Patterns
+
 The Axios Interceptor
+
 The application utilizes a custom Axios client that acts as a middleware for all network requests.
 
 Request: Automatically injects the bearer token from memory.
@@ -77,8 +87,12 @@ onMutate: async (newTask) => {
 onError: (err, newTask, context) => {
   // ... Rollback on failure
 },
+
+
 **📁 Project Structure**
+
 Plaintext
+
 src/
 ├── api/          # Axios interceptors and API service definitions
 ├── components/   # Atomic UI components
@@ -87,5 +101,7 @@ src/
 ├── store/        # Zustand global state (Auth, UI)
 ├── types/        # TypeScript interfaces and Zod schemas
 └── utils/        # Helper functions and validators
+
+
 **🛡️ Security Disclaimer**
 This application stores tokens in-memory. This prevents XSS attacks from accessing the session token. Ensure that your production environment uses strict CSP (Content Security Policy) headers on the server side to further mitigate risks.
