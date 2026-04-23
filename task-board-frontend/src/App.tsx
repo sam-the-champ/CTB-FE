@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { RegisterPage } from './pages/RegisterPage'
+import { RegisterPage } from './pages/RegisterPage';
 import { LoginPage } from './pages/LoginPage';
+import { Dashboard } from './pages/Dashboard';
 import { ProtectedRoute } from './components/ProtectedRoutes';
 import './App.css'
 
@@ -13,7 +14,7 @@ function App() {
         
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<div className="p-8"><h1>The Task Board goes here!</h1></div>} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
 
         {/* Redirect everything else to login */}
