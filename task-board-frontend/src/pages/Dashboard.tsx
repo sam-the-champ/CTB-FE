@@ -23,15 +23,16 @@ export const Dashboard = () => {
   onMutate: async (updatedTask) => {
     await queryClient.cancelQueries({ queryKey: ['tasks'] });
 
-    const previousTasks = queryClient.getQueryData(['tasks']);
 
-    queryClient.setQueryData(['tasks'], (old: any) =>
-      (old as any[] ?? []).map(...) =>
-        t.id === updatedTask.id
-          ? { ...t, status: updatedTask.status }
-          : t
-      )
-    );
+  const previousTasks = queryClient.getQueryData(['tasks']);
+
+   queryClient.setQueryData(['tasks'], (old: any[] = []) =>
+      old.map((t) =>
+       t.id === updatedTask.id
+        ? { ...t, ...updatedTask }
+        : t
+   )
+ );
 
     return { previousTasks };
   },
