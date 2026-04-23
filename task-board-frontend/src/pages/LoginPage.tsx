@@ -180,7 +180,7 @@ export const LoginPage = () => {
         <div style={{ height: '0.5px', background: '#2a2824', margin: '1.6rem 0 1.25rem' }} />
         <p style={{ textAlign: 'center', fontSize: 12.5, color: '#4a4740', margin: 0 }}>
           No account yet?{' '}
-          <a href="/RegisterPage" style={{ color: '#d28c28', textDecoration: 'none' }}>Create one free</a>
+          <a href="/register" style={{ color: '#d28c28', textDecoration: 'none' }}>Create one free</a>
         </p>
       </div>
 
