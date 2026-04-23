@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { UserPlus, Mail, Lock, Loader2, User } from 'lucide-react';
-import { RegisterSchema } from '../utils/validators';
-import api from '../api/client';
+import { UserPlus, Mail, Lock, Loader2 } from 'lucide-react';
+import { RegisterSchema } from '../utils/validator';
+import api from '../api/axios';
 import { useNavigate, Link } from 'react-router-dom';
 
 export const RegisterPage = () => {
